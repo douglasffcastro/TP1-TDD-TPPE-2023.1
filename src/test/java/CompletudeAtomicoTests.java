@@ -9,19 +9,19 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class CompletudeTests {
+public class CompletudeAtomicoTests {
 
     AvaliadorCompletude avaliadorCompletude;
     Object[][] camposAtomicos;
     String valorEsperado;
-    float completudeEsperada;
+    int completudeEsperada;
 
     @Before
     public void setup() {
         avaliadorCompletude = new AvaliadorCompletude();
     }
 
-    public CompletudeTests(Object[][] camposAtomicos, String valorEsperado, float completudeEsperada) {
+    public CompletudeAtomicoTests(Object[][] camposAtomicos, String valorEsperado, int completudeEsperada) {
         this.camposAtomicos = camposAtomicos;
         this.valorEsperado = valorEsperado;
         this.completudeEsperada = completudeEsperada;
@@ -30,20 +30,20 @@ public class CompletudeTests {
     @Parameters
     public static Collection<Object[]> getParameters() {
         Object[][] respostas = new Object[][] {
-                {new Object[][] {}, "", 0F
+                {new Object[][] {}, "", 0
                 },
                 {new Object[][] {
                     {"title", "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils"},
-                }, "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils", 0.33F},
+                }, "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils", 1},
                 {new Object[][] {
                     {"title", "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils"},
                     {"publicationDate", "2003"}
-                }, "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils2003", 0.66F},
+                }, "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils2003", 2},
                 {new Object[][] {
                     {"title", "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils"},
                     {"publicationDate", "2003"},
                     {"language", "Inglês"}
-                }, "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils2003Inglês", 1F}
+                }, "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils2003Inglês", 3}
         };
 
         return Arrays.asList(respostas);
@@ -56,14 +56,14 @@ public class CompletudeTests {
         }
 
         String atomicosAdicionados = "";
-        if (avaliadorCompletude.getCampoAtomico().get("title") != null) {
-            atomicosAdicionados = avaliadorCompletude.getCampoAtomico().get("title");
+        if (avaliadorCompletude.getCamposAtomicos().get("title") != null) {
+            atomicosAdicionados = avaliadorCompletude.getCamposAtomicos().get("title");
         }
-        if (avaliadorCompletude.getCampoAtomico().get("publicationDate") != null) {
-            atomicosAdicionados +=  avaliadorCompletude.getCampoAtomico().get("publicationDate");
+        if (avaliadorCompletude.getCamposAtomicos().get("publicationDate") != null) {
+            atomicosAdicionados +=  avaliadorCompletude.getCamposAtomicos().get("publicationDate");
         }
-        if (avaliadorCompletude.getCampoAtomico().get("language") != null){
-            atomicosAdicionados += avaliadorCompletude.getCampoAtomico().get("language");
+        if (avaliadorCompletude.getCamposAtomicos().get("language") != null){
+            atomicosAdicionados += avaliadorCompletude.getCamposAtomicos().get("language");
         }
 
         Assertions.assertEquals(valorEsperado, atomicosAdicionados);
@@ -75,6 +75,6 @@ public class CompletudeTests {
             avaliadorCompletude.adicionarAtomico((String) campo[0], (String) campo[1]);
         }
 
-        Assertions.assertEquals(completudeEsperada, avaliadorCompletude.calcularCompletudeAtomicos(), 0F);
+        Assertions.assertEquals(completudeEsperada, avaliadorCompletude.calcularCompletudeAtomicos());
     }
 }
