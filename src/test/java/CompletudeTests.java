@@ -14,33 +14,36 @@ public class CompletudeTests {
     AvaliadorCompletude avaliadorCompletude;
     Object[][] camposAtomicos;
     String valorEsperado;
+    float completudeEsperada;
 
     @Before
     public void setup() {
         avaliadorCompletude = new AvaliadorCompletude();
     }
 
-    public CompletudeTests(Object[][] camposAtomicos, String valorEsperado) {
+    public CompletudeTests(Object[][] camposAtomicos, String valorEsperado, float completudeEsperada) {
         this.camposAtomicos = camposAtomicos;
         this.valorEsperado = valorEsperado;
+        this.completudeEsperada = completudeEsperada;
     }
 
     @Parameters
     public static Collection<Object[]> getParameters() {
         Object[][] respostas = new Object[][] {
+                {new Object[][] {}, "", 0F
+                },
                 {new Object[][] {
                     {"title", "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils"},
-                }, "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils", },
+                }, "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils", 0.33F},
                 {new Object[][] {
                     {"title", "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils"},
                     {"publicationDate", "2003"}
-                }, "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils2003"
-                },
+                }, "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils2003", 0.66F},
                 {new Object[][] {
                     {"title", "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils"},
                     {"publicationDate", "2003"},
                     {"language", "Inglês"}
-                }, "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils2003Inglês"}
+                }, "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils2003Inglês", 1F}
         };
 
         return Arrays.asList(respostas);
@@ -67,21 +70,11 @@ public class CompletudeTests {
     }
 
     @Test
-    public void testCalcularCompletudeAtomicosVazios() {
-        Assertions.assertEquals(0F, avaliadorCompletude.calcularCompletudeAtomicos(), 0F);
-    }
-    @Test
-    public void testCalcularCompletudeAtomicosApenasUm() {
-        avaliadorCompletude.adicionarAtomico("title",  "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils");
-        Assertions.assertEquals(0.33F, avaliadorCompletude.calcularCompletudeAtomicos(), 0F);
-    }
+    public void testCalcularCompletudeAtomicos() {
+        for (Object[] campo: camposAtomicos) {
+            avaliadorCompletude.adicionarAtomico((String) campo[0], (String) campo[1]);
+        }
 
-    @Test
-    public void testCalcularCompletudeAtomicosTodos() {
-        avaliadorCompletude.adicionarAtomico("title",  "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils");
-        avaliadorCompletude.adicionarAtomico("publicationDate", "2003");
-        avaliadorCompletude.adicionarAtomico("language", "Inglês");
-
-        Assertions.assertEquals(1F, avaliadorCompletude.calcularCompletudeAtomicos(), 0F);
+        Assertions.assertEquals(completudeEsperada, avaliadorCompletude.calcularCompletudeAtomicos(), 0F);
     }
 }
