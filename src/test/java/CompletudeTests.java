@@ -30,7 +30,7 @@ public class CompletudeTests {
         Object[][] respostas = new Object[][] {
                 {new Object[][] {
                     {"title", "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils"},
-                }, "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils"},
+                }, "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils", },
                 {new Object[][] {
                     {"title", "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils"},
                     {"publicationDate", "2003"}
@@ -64,5 +64,15 @@ public class CompletudeTests {
         }
 
         Assertions.assertEquals(valorEsperado, atomicosAdicionados);
+    }
+
+    @Test
+    public void testCalcularCompletudeAtomicosVazios() {
+        Assertions.assertEquals(0F, avaliadorCompletude.calcularCompletudeAtomicos(), 0F);
+    }
+    @Test
+    public void testCalcularCompletudeAtomicosApenasUm() {
+        avaliadorCompletude.adicionarAtomico("title",  "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils");
+        Assertions.assertEquals(0.33F, avaliadorCompletude.calcularCompletudeAtomicos(), 0F);
     }
 }
