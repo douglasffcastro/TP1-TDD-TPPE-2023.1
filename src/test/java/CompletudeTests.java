@@ -75,4 +75,13 @@ public class CompletudeTests {
         avaliadorCompletude.adicionarAtomico("title",  "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils");
         Assertions.assertEquals(0.33F, avaliadorCompletude.calcularCompletudeAtomicos(), 0F);
     }
+
+    @Test
+    public void testCalcularCompletudeAtomicosTodos() {
+        avaliadorCompletude.adicionarAtomico("title",  "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils");
+        avaliadorCompletude.adicionarAtomico("publicationDate", "2003");
+        avaliadorCompletude.adicionarAtomico("language", "Inglês");
+
+        Assertions.assertEquals(1F, avaliadorCompletude.calcularCompletudeAtomicos(), 0F);
+    }
 }
