@@ -59,6 +59,10 @@ public class AvaliadorCompletude {
     }
 
     public int calcularCompletudeMultiCampos() {
-        return 100;
+        if (this.calcularCompletudeAtomicos() == 3 && this.calcularCompletudeOuExclusivo() == 1 && this.calcularCompletudeOuInclusivo() == 1) {
+            return 100;
+        } else {
+            return 0;
+        }
     }
 }

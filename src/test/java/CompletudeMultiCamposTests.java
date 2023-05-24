@@ -25,4 +25,16 @@ public class CompletudeMultiCamposTests {
 
         Assertions.assertEquals(100, avaliadorCompletude.calcularCompletudeMultiCampos());
     }
+
+    @Test
+    public void testCalcularCompletudeMultiCamposZero () {
+        avaliadorCompletude.adicionarAtomico("type", "journal article");
+        avaliadorCompletude.adicionarAtomico("volume", "37");
+        avaliadorCompletude.adicionarAtomico("startPage", "138");
+        avaliadorCompletude.adicionarAtomico("endPage", "143");
+        avaliadorCompletude.adicionarComposto("authors", new Object[] {"name", "Dulce Helena Gonçalves Orofino",
+                "ordemAutoria", "10"});
+
+        Assertions.assertEquals(0, avaliadorCompletude.calcularCompletudeMultiCampos());
+    }
 }
