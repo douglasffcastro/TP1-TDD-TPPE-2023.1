@@ -46,4 +46,15 @@ public class AvaliadorCompletude {
             return 0;
         }
     }
+
+    public int calcularCompletudeOuInclusivo() {
+        if (Arrays.deepToString(this.camposCompostos.get("authors").toArray()).contains("nationality")
+                || Arrays.deepToString(this.camposCompostos.get("authors").toArray()).contains("birthCountry")
+                || Arrays.deepToString(this.camposCompostos.get("authors").toArray()).contains("birthCity")
+                ||  Arrays.deepToString(this.camposCompostos.get("authors").toArray()).contains("birthState")) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 }
