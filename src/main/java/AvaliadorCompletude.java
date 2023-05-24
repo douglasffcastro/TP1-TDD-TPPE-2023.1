@@ -58,11 +58,7 @@ public class AvaliadorCompletude {
         }
     }
 
-    public int calcularCompletudeMultiCampos() {
-        if (this.calcularCompletudeAtomicos() == 3 && this.calcularCompletudeOuExclusivo() == 1 && this.calcularCompletudeOuInclusivo() == 1) {
-            return 100;
-        } else {
-            return 0;
-        }
+    public float calcularCompletudeMultiCampos() {
+        return (float) (this.calcularCompletudeAtomicos() + this.calcularCompletudeOuExclusivo() + calcularCompletudeOuInclusivo()) * 20;
     }
 }

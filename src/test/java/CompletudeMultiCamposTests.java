@@ -23,7 +23,7 @@ public class CompletudeMultiCamposTests {
                                                                               "birthState", "RJ",
                                                                               "birthCountry", "Brasil"});
 
-        Assertions.assertEquals(100, avaliadorCompletude.calcularCompletudeMultiCampos());
+        Assertions.assertEquals(100F, avaliadorCompletude.calcularCompletudeMultiCampos());
     }
 
     @Test
@@ -35,6 +35,17 @@ public class CompletudeMultiCamposTests {
         avaliadorCompletude.adicionarComposto("authors", new Object[] {"name", "Dulce Helena Gonçalves Orofino",
                 "ordemAutoria", "10"});
 
-        Assertions.assertEquals(0, avaliadorCompletude.calcularCompletudeMultiCampos());
+        Assertions.assertEquals(0F, avaliadorCompletude.calcularCompletudeMultiCampos());
+    }
+
+    @Test
+    public void testCalcularCompletudeMultiCamposIncompleto () {
+        avaliadorCompletude.adicionarAtomico("title", "Protein synthesis inhibitory activity in culture filtrates from new strains of Streptomyces isolated from Brazilian tropical soils");
+        avaliadorCompletude.adicionarAtomico("language", "Inglês");
+        avaliadorCompletude.adicionarComposto("authors", new Object[] {"name", "Dulce Helena Gonçalves Orofino",
+                "ordemAutoria", "10",
+                "birthCountry", "Brasil"});
+
+        Assertions.assertEquals(60F, avaliadorCompletude.calcularCompletudeMultiCampos(), 0F);
     }
 }
