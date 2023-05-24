@@ -40,6 +40,10 @@ public class AvaliadorCompletude {
     }
 
     public int calcularCompletudeOuExclusivo() {
-        return 1;
+        if (Arrays.deepToString(this.camposCompostos.get("authors").toArray()).contains("identifier.lattes") ^ Arrays.asList(this.camposCompostos.get("authors").toArray()).contains("identifier.orcid")) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }
