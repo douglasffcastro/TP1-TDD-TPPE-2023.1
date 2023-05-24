@@ -53,11 +53,12 @@ O cálculo da completude de um registro é feito de maneira recursiva, de modo q
 
 ### 1.4.1. Instale os pré-requisitos
   - Java 20.0.1
-  - JUnit 5.9.2
   - Maven 3.8.1
+  - JUnit 5.9.2
 
 ### 1.4.2. Execute os teste
 Na IDE de sua preferência, execute o TestSuite que está no diretório test/java com coverage. Na demonstração abaixo, utilizei o IntelliJ.
-''
-## 1.4. Resultados
-
+![Screenshot from 2023-05-24 03-49-26](https://github.com/douglasffcastro/TP1-TDD-TPPE-2023.1/assets/69691521/98ddfb16-a444-42df-9a84-79ec0cd0f689)
+## 1.5. Resultados
+![Screenshot from 2023-05-24 03-50-05](https://github.com/douglasffcastro/TP1-TDD-TPPE-2023.1/assets/69691521/ee413a0e-9a63-4726-af60-50f16f730229)
+![Screenshot from 2023-05-24 03-50-17](https://github.com/douglasffcastro/TP1-TDD-TPPE-2023.1/assets/69691521/22d6736e-9f94-4838-a4f1-815bf8733f70)
