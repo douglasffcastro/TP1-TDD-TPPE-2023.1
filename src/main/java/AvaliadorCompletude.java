@@ -4,7 +4,6 @@ public class AvaliadorCompletude {
     Map<String, String> camposAtomicos = new HashMap<String, String>();
     Map<String, List<Object>> camposCompostos = new HashMap<String, List<Object>>();
 
-
     public void adicionarAtomico(String nomecampo, String valor) {
         camposAtomicos.put(nomecampo, valor);
     }
@@ -38,5 +37,9 @@ public class AvaliadorCompletude {
         } else {
             return 0;
         }
+    }
+
+    public int calcularCompletudeOuExclusivo() {
+        return 1;
     }
 }

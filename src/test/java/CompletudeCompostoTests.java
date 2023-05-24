@@ -104,4 +104,20 @@ public class CompletudeCompostoTests {
 
         Assertions.assertArrayEquals(valorEsperado.toArray(), campoCompostoAtual.toArray());
     }
+
+    @Test
+    public void testCalcularCompletudeOuExclusivoPreenchido () {
+        avaliadorCompletude.adicionarComposto("authors", new Object[] {
+                                                                    "name", "Dulce Helena Gonçalves Orofino",
+                                                                    "ordemAutoria", "10",
+                                                                    "identifier.lattes", "0009277151089005",
+                                                                    "nationality", "Brasil",
+                                                                    "birthCity", "rio de janeiro",
+                                                                    "birthState", "RJ",
+                                                                    "birthCountry", "Brasil"
+                                                }
+        );
+
+        Assertions.assertEquals(1, avaliadorCompletude.calcularCompletudeOuExclusivo());
+    }
 }
