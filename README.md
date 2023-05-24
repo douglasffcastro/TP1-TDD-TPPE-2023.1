@@ -57,7 +57,7 @@ O cálculo da completude de um registro é feito de maneira recursiva, de modo q
   - Maven 3.8.1
 
 ### 1.4.2. Execute os teste
-Na IDE de sua preferência, execute os testes do diretório test/java com coverage. Na demonstração abaixo, utilizei o IntelliJ.
-
+Na IDE de sua preferência, execute o TestSuite que está no diretório test/java com coverage. Na demonstração abaixo, utilizei o IntelliJ.
+''
 ## 1.4. Resultados
 
