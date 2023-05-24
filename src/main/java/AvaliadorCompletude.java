@@ -57,4 +57,8 @@ public class AvaliadorCompletude {
             return 0;
         }
     }
+
+    public int calcularCompletudeMultiCampos() {
+        return 100;
+    }
 }
