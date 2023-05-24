@@ -40,25 +40,33 @@ public class AvaliadorCompletude {
     }
 
     public int calcularCompletudeOuExclusivo() {
-        if (Arrays.deepToString(this.camposCompostos.get("authors").toArray()).contains("identifier.lattes") ^ Arrays.deepToString(this.camposCompostos.get("authors").toArray()).contains("identifier.orcid")) {
-            return 1;
+        if (this.camposCompostos.get("authors") != null) {
+            if (Arrays.deepToString(this.camposCompostos.get("authors").toArray()).contains("identifier.lattes") ^ Arrays.deepToString(this.camposCompostos.get("authors").toArray()).contains("identifier.orcid")) {
+                return 1;
+            } else {
+                return 0;
+            }
         } else {
             return 0;
         }
     }
 
     public int calcularCompletudeOuInclusivo() {
-        if (Arrays.deepToString(this.camposCompostos.get("authors").toArray()).contains("nationality")
-                || Arrays.deepToString(this.camposCompostos.get("authors").toArray()).contains("birthCountry")
-                || Arrays.deepToString(this.camposCompostos.get("authors").toArray()).contains("birthCity")
-                ||  Arrays.deepToString(this.camposCompostos.get("authors").toArray()).contains("birthState")) {
-            return 1;
+        if (this.camposCompostos.get("authors") != null) {
+            if (Arrays.deepToString(this.camposCompostos.get("authors").toArray()).contains("nationality")
+                    || Arrays.deepToString(this.camposCompostos.get("authors").toArray()).contains("birthCountry")
+                    || Arrays.deepToString(this.camposCompostos.get("authors").toArray()).contains("birthCity")
+                    ||  Arrays.deepToString(this.camposCompostos.get("authors").toArray()).contains("birthState")) {
+                return 1;
+            } else {
+                return 0;
+            }
         } else {
             return 0;
         }
     }
 
     public float calcularCompletudeMultiCampos() {
-        return (float) (this.calcularCompletudeAtomicos() + this.calcularCompletudeOuExclusivo() + calcularCompletudeOuInclusivo()) * 20;
+        return (float) (this.calcularCompletudeAtomicos() + this.calcularCompletudeOuExclusivo() + this.calcularCompletudeOuInclusivo()) * 20;
     }
 }
