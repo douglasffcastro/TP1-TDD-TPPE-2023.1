@@ -58,5 +58,8 @@ O cálculo da completude de um registro é feito de maneira recursiva, de modo q
 
 ### 1.4.2. Execute os teste
 Na IDE de sua preferência, execute o AllTestes que está no diretório test/java com coverage. Na demonstração abaixo, utilizei o IntelliJ.
+![Screenshot from 2023-05-24 21-32-20](https://github.com/douglasffcastro/TP1-TDD-TPPE-2023.1/assets/69691521/680e8096-d60b-48b8-917f-2dec78864ebc)
 
 ## 1.4. Resultados
+![Screenshot from 2023-05-24 21-33-02](https://github.com/douglasffcastro/TP1-TDD-TPPE-2023.1/assets/69691521/fc488cdc-2a50-4a63-a1e5-54f11ff38c21)
+![Screenshot from 2023-05-24 21-33-32](https://github.com/douglasffcastro/TP1-TDD-TPPE-2023.1/assets/69691521/a666d606-7841-428a-a49c-1b86bd838752)
