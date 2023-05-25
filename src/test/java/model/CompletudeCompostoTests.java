@@ -1,5 +1,12 @@
+package model;
+
+import excecoes.CampoCompostoNuloException;
+import excecoes.NomeCampoIsBlankException;
+import suites.TesteDeExcecao;
+import suites.TesteFuncional;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -95,7 +102,8 @@ public class CompletudeCompostoTests {
     }
 
     @Test
-    public void testAdicionaCamposAtomicos () {
+    @Category(TesteFuncional.class)
+    public void testAdicionaCamposAtomicos () throws NomeCampoIsBlankException {
         for (Object[] campo: camposCompostos) {
             avaliadorCompletude.adicionarComposto((String) campo[0], campo[1]);
         }
@@ -103,5 +111,17 @@ public class CompletudeCompostoTests {
         List<Object> campoCompostoAtual = avaliadorCompletude.getCamposCompostos().get("authors");
 
         Assertions.assertArrayEquals(valorEsperado.toArray(), campoCompostoAtual.toArray());
+    }
+
+    @Test(expected = CampoCompostoNuloException.class)
+    @Category(TesteDeExcecao.class)
+    public void testCampoCompostoNuloOuExclusivo() throws CampoCompostoNuloException {
+        avaliadorCompletude.calcularCompletudeOuExclusivo();
+    }
+
+    @Test(expected = CampoCompostoNuloException.class)
+    @Category(TesteDeExcecao.class)
+    public void testCampoCompostoNuloOuInclusivo() throws CampoCompostoNuloException {
+        avaliadorCompletude.calcularCompletudeOuInclusivo();
     }
 }

@@ -1,5 +1,11 @@
+package model;
+
+import excecoes.CampoCompostoNuloException;
+import excecoes.NomeCampoIsBlankException;
+import suites.TesteFuncional;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -94,7 +100,8 @@ public class CompletudeMultiCamposTests {
     }
 
     @Test
-    public void testAdicionaCamposAtomicos () {
+    @Category(TesteFuncional.class)
+    public void testAdicionaCamposAtomicos () throws NomeCampoIsBlankException, CampoCompostoNuloException {
         for (Object[] campo: campos) {
             if (campo[0] == "authors") {
                 avaliadorCompletude.adicionarComposto((String) campo[0], campo[1]);

@@ -1,5 +1,11 @@
+package model;
+
+import excecoes.NomeCampoIsBlankException;
+import suites.TesteDeExcecao;
+import suites.TesteFuncional;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -50,7 +56,8 @@ public class CompletudeAtomicoTests {
     }
 
     @Test
-    public void testAdicionaCamposAtomicos () {
+    @Category(TesteFuncional.class)
+    public void testAdicionaCamposAtomicos () throws NomeCampoIsBlankException {
         for (Object[] campo: camposAtomicos) {
             avaliadorCompletude.adicionarAtomico((String) campo[0], (String) campo[1]);
         }
@@ -70,11 +77,24 @@ public class CompletudeAtomicoTests {
     }
 
     @Test
-    public void testCalcularCompletudeAtomicos() {
+    @Category(TesteFuncional.class)
+    public void testCalcularCompletudeAtomicos() throws NomeCampoIsBlankException {
         for (Object[] campo: camposAtomicos) {
             avaliadorCompletude.adicionarAtomico((String) campo[0], (String) campo[1]);
         }
 
         Assertions.assertEquals(completudeEsperada, avaliadorCompletude.calcularCompletudeAtomicos());
+    }
+
+    @Test(expected = NomeCampoIsBlankException.class)
+    @Category(TesteDeExcecao.class)
+    public void testNomeCampoEmBrancoAtomico() throws NomeCampoIsBlankException {
+        avaliadorCompletude.adicionarAtomico("", "O título");
+    }
+
+    @Test(expected = NomeCampoIsBlankException.class)
+    @Category(TesteDeExcecao.class)
+    public void testNomeCampoEmBrancoComposto() throws NomeCampoIsBlankException {
+        avaliadorCompletude.adicionarComposto("", new Object());
     }
 }
