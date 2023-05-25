@@ -53,11 +53,10 @@ O cálculo da completude de um registro é feito de maneira recursiva, de modo q
 
 ### 1.4.1. Instale os pré-requisitos
   - Java 20.0.1
-  - JUnit 5.9.2
   - Maven 3.8.1
+  - JUnit 5.9.2
 
 ### 1.4.2. Execute os teste
 Na IDE de sua preferência, execute o AllTestes que está no diretório test/java com coverage. Na demonstração abaixo, utilizei o IntelliJ.
-''
-## 1.4. Resultados
 
+## 1.4. Resultados
