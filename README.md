@@ -10,4 +10,3 @@
 ### :link: [**Trabalho Prático 1: Test-Driven Development**](T1-TDD/README.md)
 
 ### :link: [**Trabalho Prático 2: Qualidade do Projeto de Código**](T2-QUALIDADE/README.md)
-
